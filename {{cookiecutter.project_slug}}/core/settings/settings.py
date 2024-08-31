@@ -23,7 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY', default='!!!SET_DJANGO_SECRET_KEY!!!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+{% if cookiecutter.debug == 'y' %}
 DEBUG = True
+{% elif cookiecutter.debug == 'n' %}
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -131,9 +134,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = '{{cookiecutter.timezone}}'
 
-USE_I18N = True
+USE_I18N = False
 
 USE_TZ = True
 
