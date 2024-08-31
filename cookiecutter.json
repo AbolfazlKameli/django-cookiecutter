@@ -11,10 +11,11 @@
     "Beer"
   ],
   "timezone": "UTC",
-  "use_docker": "n",
+  "database": "default",
   "use_celery": "n",
   "celery_message_broker": "redis",
   "git": "n",
   "github_repository": "n",
-  "debug": "y"
+  "debug": "y",
+  "use_arvan_cloud_s3": "y"
 }
