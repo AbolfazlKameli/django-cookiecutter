@@ -43,12 +43,10 @@ THIRD_PARY_APPS = [
 {%- if cookiecutter.use_celery == 'y' %}
     "django_celery_beat",
 {%- endif %}
-{%- if cookiecutter.use_drf == "y" %}
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'drf_spectacular',
-{%- endif %}
 {%- if cookiecutter.debug == 'y'%}
     'debug_toolbar'
 {%- endif %}
@@ -152,7 +150,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # User Model
 AUTH_USER_MODEL = 'users.User'
 
-{% if cookiecutter.use_drf == "y" -%}
+
 # django-rest-framework
 # -------------------------------------------------------------------------------
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
@@ -169,7 +167,7 @@ REST_FRAMEWORK = {
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_ALLOW_ALL_ORIGINS = True
-{%- endif %}
+
 
 {%-if cookiecutter.use_celery == 'y'%}
 from core.configs.celery_configs import *
