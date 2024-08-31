@@ -71,9 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-{%- if cookiecutter.use_drf == 'y' %}
     "corsheaders.middleware.CorsMiddleware",
-{%- endif %}
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -172,3 +170,20 @@ REST_FRAMEWORK = {
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_ALLOW_ALL_ORIGINS = True
 {%- endif %}
+
+{%-if cookiecutter.use_celery == 'y'%}
+from core.configs.celery_configs import *
+{%-endif%}
+
+{%-if cookiecutter.use_drf_spectacular%}
+from core.configs.drf_spectacular import *
+{%-endif%}
+
+{%-if cookiecutter.jwt_authentication%}
+from core.configs.jwt import *
+{%-endif%}
+from core.configs.SMTP_configs import *
+
+{%-if cookiecutter.use_arvan_cloud_s3%}
+from core.configs.storages import *
+{%-endif%}

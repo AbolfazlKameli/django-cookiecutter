@@ -4,18 +4,23 @@
   "description": "Behold My Awesome Project!",
   "author_name": "Abolfazl Kameli",
   "email_domain_name": "gmail.com",
-  "email_address": "{{ cookiecutter.author_name.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.domain_name.lower() | trim() }}",
+  "email_address": "{{ cookiecutter.author_name.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.email_domain_name.lower() | trim() }}",
+
+  "domain_name": "127.0.0.1",
   "version": "0.1.0",
   "open_source_license": [
     "MIT",
     "Beer"
   ],
+
   "timezone": "UTC",
   "database": "default",
+  "use_drf_spectacular": "y",
   "use_celery": "n",
   "celery_message_broker": "redis",
   "git": "n",
   "github_repository": "n",
   "debug": "y",
-  "use_arvan_cloud_s3": "y"
+  "use_arvan_cloud_s3": "y",
+  "jwt_authentication": "y"
 }
