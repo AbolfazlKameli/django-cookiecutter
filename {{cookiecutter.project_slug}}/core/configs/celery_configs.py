@@ -4,17 +4,17 @@ from decouple import config
 
 broker_connection_retry_on_startup = True
 
-{ % if cookiecutter.celery_message_broker == 'rabbitmq-server' %}
+{% if cookiecutter.celery_message_broker == 'rabbitmq-server' %}
 broker_url = "pyamqp://guest@localhost//"
 result_backend = 'rpc://'
-{ % elif cookiecutter.celery_message_broker == 'redis' %}
+{% elif cookiecutter.celery_message_broker == 'redis' %}
 broker_url = "redis://localhost:6379/0"
 result_backend = "redis://localhost:6379/0"
-{ % endif %}
+{% endif %}
 worker_prefetch_multiplier = 3
-{ % if cookiecutter.user_timezone %}
+{% if cookiecutter.use_timezone == 'y' %}
 timezone = config('TIME_ZONE')
-{ % endif %}
+{% endif %}
 task_serializer = 'json'
 result_serializer = 'pickle'
 accept_content = ['json', 'pickle']

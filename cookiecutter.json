@@ -14,20 +14,17 @@
   ],
 
   "timezone": "UTC",
-  "user_timezone": "y",
+  "use_timezone": "y",
   "database": [
     "default",
     "postgresql"
   ],
-  "use_drf_spectacular": "y",
-  "use_celery": "n",
+
   "celery_message_broker": [
     "redis",
     "rabbitmq-server"
   ],
   "git": "n",
   "github_repository": "n",
-  "debug": "y",
-  "use_arvan_cloud_s3": "y",
-  "jwt_authentication": "y"
+  "debug": "y"
 }

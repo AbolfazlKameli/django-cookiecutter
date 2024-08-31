@@ -27,6 +27,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='!!!SET_DJANGO_SECRET_KEY!!!')
 DEBUG = True
 {% elif cookiecutter.debug == 'n' %}
 DEBUG = False
+{% endif %}
 
 ALLOWED_HOSTS = []
 
@@ -43,9 +44,7 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARY_APPS = [
-{%- if cookiecutter.use_celery == 'y' %}
     "django_celery_beat",
-{%- endif %}
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -53,9 +52,7 @@ THIRD_PARY_APPS = [
 {%- if cookiecutter.debug == 'y'%}
     'debug_toolbar'
 {%- endif %}
-{%- if cookiecutter.use_arvan_cloud_s3 == 'y'%}
     'storages'
-{%- endif %}
 ]
 
 LOCAL_APPS = [
@@ -172,19 +169,11 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-{%-if cookiecutter.use_celery == 'y'%}
 from core.configs.celery_configs import *
-{%-endif%}
 
-{%-if cookiecutter.use_drf_spectacular%}
 from core.configs.drf_spectacular import *
-{%-endif%}
 
-{%-if cookiecutter.jwt_authentication%}
 from core.configs.jwt import *
-{%-endif%}
 from core.configs.SMTP_configs import *
 
-{%-if cookiecutter.use_arvan_cloud_s3%}
 from core.configs.storages import *
-{%-endif%}
