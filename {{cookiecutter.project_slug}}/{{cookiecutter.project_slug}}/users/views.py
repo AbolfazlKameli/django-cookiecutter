@@ -9,8 +9,8 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 from {{cookiecutter.project_slug}}.docs.serializers.doc_serializers import MessageSerializer
-from permissions import permissions
-from utils import JWT_token, bucket
+from {{cookiecutter.project_slug}}.permissions import permissions
+from {{cookiecutter.project_slug}}.utils import JWT_token, bucket
 from . import serializers
 from .docs import doc_serializers
 from .models import User

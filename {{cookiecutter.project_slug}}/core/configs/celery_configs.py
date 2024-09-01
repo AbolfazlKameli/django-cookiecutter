@@ -12,7 +12,7 @@ broker_url = "redis://localhost:6379/0"
 result_backend = "redis://localhost:6379/0"
 {% endif %}
 worker_prefetch_multiplier = 3
-{% if cookiecutter.use_timezone == 'y' %}
+{% if cookiecutter.use_timezone_in_celery == 'y' %}
 timezone = config('TIME_ZONE')
 {% endif %}
 task_serializer = 'json'

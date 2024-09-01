@@ -13,9 +13,9 @@ from rest_framework import status
 from rest_framework.test import APIRequestFactory, APITestCase
 from rest_framework_simplejwt.tokens import AccessToken
 
-from apps.users.models import User
-from apps.users.views import UsersListAPI
-from utils import JWT_token
+from {{cookiecutter.project_slug}}.users.models import User
+from {{cookiecutter.project_slug}}.users.views import UsersListAPI
+from {{cookiecutter.project_slug}}.utils import JWT_token
 
 
 class TestUsersListAPI(APITestCase):
@@ -127,7 +127,7 @@ class TestUserRegisterVerificationAPI(APITestCase):
         self.assertIn('message', response.data)
         self.assertEqual(response.data['message'], 'this account already is active')
 
-    @patch('apps.users.views.JWT_token.get_object_or_404')
+    @patch('{{cookiecutter.project_slug}}.users.views.JWT_token.get_object_or_404')
     def test_activation_url_invalid(self, mock_jwt_decode_token):
         mock_jwt_decode_token.side_effect = Http404
         response = self.client.get(self.url.replace('invalid_token', self.token['token']))
@@ -162,7 +162,7 @@ class TestResendVerificationEmailAPI(APITestCase):
         self.assertIn('message', response.data)
         self.assertEqual(response.data['message'], 'The activation email has been sent again successfully')
 
-    @patch('utils.send_email.send_link')
+    @patch('{{cookiecutter.project_slug}}.utils.send_email.send_link')
     def test_invalid_email(self, mock_send_email):
         data = {'email': 'does_not_exists_user_email@gmail.com'}
         response = self.client.post(self.url, data=data)
@@ -171,7 +171,7 @@ class TestResendVerificationEmailAPI(APITestCase):
         self.assertEqual(response.data['errors']['non_field_errors'][0], 'User does not exist!')
         mock_send_email.assert_not_called()
 
-    @patch('utils.send_email.send_link')
+    @patch('{{cookiecutter.project_slug}}.utils.send_email.send_link')
     def test_active_user_email(self, mock_send_email):
         data = {'email': 'active_user@gmail.com'}
         response = self.client.post(self.url, data=data)
@@ -226,7 +226,7 @@ class TestSetPasswordAPI(APITestCase):
         self.assertEqual(response.data['message'], 'Password changed successfully')
         self.assertTrue(self.user.check_password(data['new_password']))
 
-    @patch('apps.users.views.JWT_token.get_object_or_404')
+    @patch('{{cookiecutter.project_slug}}.users.views.JWT_token.get_object_or_404')
     def test_invalid_token_user(self, mock_not_found):
         data = {'new_password': 'asdF@123', 'confirm_new_password': 'asdF@123'}
         mock_not_found.side_effect = Http404
@@ -248,7 +248,7 @@ class TestResetPasswordAPI(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['message'], 'sent you a change password link!')
 
-    @patch('apps.users.views.get_object_or_404')
+    @patch('{{cookiecutter.project_slug}}.users.views.get_object_or_404')
     def test_invalid_email(self, mock_get_object):
         mock_get_object.side_effect = Http404
         data = {'email': 'email@gmail.com'}
@@ -292,7 +292,7 @@ class TestUserProfileAPI(APITestCase):
         self.assertEqual(response.data['score'], 0)
 
     def test_retrieve_user_profile_not_found(self):
-        url = reverse('users:user_profile', args=[23])
+        url = reverse('users:user_profile', args=[645])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.data['detail'], 'No User matches the given query.')
@@ -309,7 +309,7 @@ class TestUserProfileAPI(APITestCase):
                 content_type='image/png'
             )
         data = {'username': 'new_username', 'avatar': avatar}
-        url = reverse('users:user_profile', args=[1])
+        url = reverse('users:user_profile', args=[self.user.id])
         response = self.client.patch(url, data, HTTP_AUTHORIZATION='Bearer ' + self.token)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['message'], 'Updated profile successfully.')
@@ -317,10 +317,10 @@ class TestUserProfileAPI(APITestCase):
         self.assertEqual(self.user.username, 'new_username')
         self.assertTrue(self.user.profile.avatar.name.endswith('avatar.png'))
 
-    @patch('apps.users.views.send_verification_email.delay_on_commit')
+    @patch('{{cookiecutter.project_slug}}.users.views.send_verification_email.delay_on_commit')
     def test_update_email(self, mock_send_email_task):
         data = {'email': 'email@email.com'}
-        url = reverse('users:user_profile', args=[1])
+        url = reverse('users:user_profile', args=[self.user.id])
         response = self.client.patch(url, data, HTTP_AUTHORIZATION='Bearer ' + self.token)
         mock_send_email_task.assert_called_once()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -328,9 +328,9 @@ class TestUserProfileAPI(APITestCase):
         self.assertFalse(self.user.is_active)
         self.assertEqual(self.user.email, 'email@email.com')
 
-    @patch('apps.users.views.bucket.bucket.delete_object')
+    @patch('{{cookiecutter.project_slug}}.users.views.bucket.bucket.delete_object')
     def test_delete_account(self, mock_delete_avatar):
-        url = reverse('users:user_profile', args=[1])
+        url = reverse('users:user_profile', args=[self.user.id])
         response = self.client.delete(url, HTTP_AUTHORIZATION='Bearer ' + self.token)
         self.assertEqual(response.status_code, 200)
         self.assertNotIn(self.user, User.objects.all())

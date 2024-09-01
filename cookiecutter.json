@@ -14,10 +14,14 @@
   ],
 
   "timezone": "UTC",
-  "use_timezone": "y",
+  "use_timezone_in_celery": "y",
   "database": [
     "default",
     "postgresql"
+  ],
+  "caches": [
+    "redis",
+    "none"
   ],
 
   "celery_message_broker": [

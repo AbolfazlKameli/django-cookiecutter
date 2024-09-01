@@ -4,8 +4,8 @@ from celery import shared_task
 from django.conf import settings
 from django.urls import reverse
 
-from apps.users.models import User
-from utils import JWT_token, send_email
+from {{cookiecutter.project_slug}}.users.models import User
+from {{cookiecutter.project_slug}}.utils import JWT_token, send_email
 
 
 @shared_task

@@ -1,12 +1,11 @@
 import os
 
 from celery import Celery
-from django.conf import settings
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings.settings')
 
-app = Celery('forum')
+app = Celery('{{cookiecutter.project_slug}}')
 
-app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+app.autodiscover_tasks()
 
-app.config_from_object('core.settings.celery_configs')
+app.config_from_object('core.configs.celery_configs')

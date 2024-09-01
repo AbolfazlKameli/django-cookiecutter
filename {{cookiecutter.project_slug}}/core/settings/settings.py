@@ -114,6 +114,16 @@ DATABASES = {
 }
 {%- endif %}
 
+# caches
+{%- if cookiecutter.caches == 'redis' %}
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": config('REDIS_LOCATION', default="redis://127.0.0.1:6379"),
+    }
+}
+{%- endif%}
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -162,18 +172,16 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_PAGINATION_CLASS': 'utils.paginators.NeatPagination',
+    'DEFAULT_PAGINATION_CLASS': '{{cookiecutter.project_slug}}.utils.paginators.NeatPagination',
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_ALLOW_ALL_ORIGINS = True
 
+SITE_ID = 1
 
 from core.configs.celery_configs import *
-
 from core.configs.drf_spectacular import *
-
 from core.configs.jwt import *
 from core.configs.SMTP_configs import *
-
 from core.configs.storages import *
