@@ -1,0 +1,34 @@
+{
+  "project_name": "My API",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+  "description": "Behold My Awesome Project!",
+  "author_name": "Abolfazl Kameli",
+  "email_domain_name": "gmail.com",
+  "email_address": "{{ cookiecutter.author_name.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.email_domain_name.lower() | trim() }}",
+  "year": "2024",
+
+  "domain_name": "127.0.0.1",
+  "open_source_license": [
+    "MIT",
+    "Beer"
+  ],
+
+  "timezone": "UTC",
+  "use_timezone_in_celery": "y",
+  "database": [
+    "default",
+    "postgresql"
+  ],
+  "caches": [
+    "redis",
+    "none"
+  ],
+
+  "celery_message_broker": [
+    "redis",
+    "rabbitmq-server"
+  ],
+  "git": "n",
+  "github_repository": "n",
+  "debug": "y"
+}
