@@ -38,6 +38,7 @@
 visit Redis [installation guide](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/).
 {%- elif cookiecutter.celery_message_broker == 'rabbitmq-server'%}
 visit RabbitMQ [installation guide](https://www.rabbitmq.com/docs/download)
+{%- endif %}
 
 - Clone the project
 
@@ -69,10 +70,16 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
+- Create Your `.env` file
+
+```shell
+$ cp .env.example .env
+```
+
 - Apply Migrations to the Database
 
 ```shell
-$ python managae.py migrate
+$ python manage.py migrate
 ```
 
 - Start the django server
@@ -85,9 +92,10 @@ $ python manage.py runserver
 
 ### Setting Up Your Users
 
-- To create a **superuser account**, use this command:
-
-      $ python manage.py createsuperuser
+To create a **superuser account**, use this command:
+```shell
+$ python manage.py createsuperuser
+```
 
 ### Celery
 
@@ -95,8 +103,19 @@ This app comes with Celery.<br>
 To run a celery worker:
 
 ```shell
-celery -A core worker -l INFO
+$ celery -A core worker -l INFO
 ```
 
 Please note: For Celery's import magic to work, it is important _where_ the celery commands are run. If you are in the
 same folder with _manage.py_, you should be right.
+
+### Tests
+
+The users app comes with 68 test.<br>
+To run tests:
+
+```shell
+$ python manage.py test
+```
+
+The tests are written for the pre-built users app in the {{cookiecutter.project_slug}} project.
