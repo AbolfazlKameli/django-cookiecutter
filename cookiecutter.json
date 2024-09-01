@@ -30,6 +30,5 @@
     "redis",
     "rabbitmq-server"
   ],
-  "git": "n",
   "debug": "y"
 }
