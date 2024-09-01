@@ -97,5 +97,7 @@ $ cd stackoverflow_clone
 $ ls
 ```
 
+“🎉 Surprise! I’ve just set up a Git repository for you.”
+
 Don't forget to carefully look at the generated README. Awesome, right?
  

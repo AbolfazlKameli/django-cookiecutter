@@ -31,6 +31,5 @@
     "rabbitmq-server"
   ],
   "git": "n",
-  "github_repository": "n",
   "debug": "y"
 }
