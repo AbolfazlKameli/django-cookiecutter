@@ -14,7 +14,6 @@ Django==5.1
 django-celery-beat==2.7.0
 django-cors-headers==4.4.0
 django-debug-toolbar==4.4.6
-django-redis==5.4.0
 djangorestframework-simplejwt==5.3.1
 django-storages==1.14.4
 django-timezone-field==7.0
@@ -32,12 +31,19 @@ pillow==10.4.0
 prometheus_client==0.20.0
 prompt_toolkit==3.0.47
 python-decouple==3.8
-psycopg2-binary==2.9.9
+{%- if cookiecutter.database == 'postgresql' %}
+# use binary version if you have a trouble with installation.
+# psycopg2-binary==2.9.9
+psycopg==3.2.1
+{%- endif %}
 python-crontab==3.2.0
 python-dateutil==2.9.0.post0
 pytz==2024.1
 PyYAML==6.0.2
+{%- if cookiecutter.caches== 'redis' or cookiecutter.celery_message_broker == 'redis' %}
 redis==5.0.8
+hiredis==3.0.0
+{%- endif %}
 referencing==0.35.1
 rpds-py==0.20.0
 s3transfer==0.10.2
