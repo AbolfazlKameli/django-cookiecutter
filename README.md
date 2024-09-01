@@ -56,36 +56,38 @@ You'll be prompted for some values. Provide them, then a Django project will be 
 Answer the prompts with your own desired options. For example:
 
 ```shell
-$ cookiecutter https://github.com/AbolfazlKameli/django-cookiecutter.git
-    [1/17] project_name (My API): stack over flow clone
-    [2/17] project_slug (stack_over_flow_clone): 
-    [3/17] description (Behold My Awesome Project!): this is a clone of stack over flow
-    [4/17] author_name (Abolfazl Kameli): 
-    [5/17] email_domain_name (gmail.com): 
-    [6/17] email_address (abolfazl-kameli@gmail.com): abolfazlkameli0@gmail.com
-    [7/17] year (2024): 
-    [8/17] domain_name (127.0.0.1):        
-    [9/17] Select open_source_license
-      1 - MIT
-      2 - Beer
-      Choose from [1/2] (1): 2
-    [10/17] timezone (UTC): Asia/Tehran
-    [11/17] use_timezone_in_celery (y): 
-    [12/17] Select database
-      1 - default
-      2 - postgresql
-      Choose from [1/2] (1): 2
-    [13/17] Select caches
-      1 - redis
-      2 - none
-      Choose from [1/2] (1): 1
-    [14/17] Select celery_message_broker
-      1 - redis
-      2 - rabbitmq-server
-      Choose from [1/2] (1): 1
-    [15/17] git (n): 
-    [16/17] github_repository (n): 
-    [17/17] debug (y): 
+$ cookiecutter https://github.com/AbolfazlKameli/django-cookiecutter                                                                  08:51:34 PM
+     [1/19] project_name (My API): StackOverFlow clone
+     [2/19] project_slug (stackoverflow_clone): 
+     [3/19] description (Behold My Awesome Project!): this is a clone of StackOverFlow
+     [4/19] author_name (Abolfazl Kameli): Abolfazl Kameli
+     [5/19] email_domain_name (gmail.com): 
+     [6/19] email_address (abolfazl-kameli@gmail.com): abolfazlkameli0@gmail.com
+     [7/19] github_username (AbolfazlKameli): 
+     [8/19] github_profile_address (https://github.com/AbolfazlKameli): 
+     [9/19] year (2024): 
+     [10/19] domain_name (127.0.0.1): 
+     [11/19] Select open_source_license
+       1 - MIT
+       2 - Beer
+       Choose from [1/2] (1): 2
+     [12/19] timezone (UTC): Asia/Tehran
+     [13/19] use_timezone_in_celery (y): y
+     [14/19] Select database
+       1 - default
+       2 - postgresql
+       Choose from [1/2] (1): 2
+     [15/19] Select caches
+       1 - redis
+       2 - none
+       Choose from [1/2] (1): 1
+     [16/19] Select celery_message_broker
+       1 - redis
+       2 - rabbitmq-server
+       Choose from [1/2] (1): 1
+     [17/19] git (n): n
+     [18/19] github_repository (n): n
+     [19/19] debug (y): y
 ```
 
 Enter the project and take a look around:
