@@ -37,7 +37,7 @@ These features can be enabled during initial project setup.
 
 ## Usage
 
-Let's pretend you want to create a Django project called "stack over flow clone". Rather than using startproject and
+Let's pretend you want to create a Django project called "StackOverFlow clone". Rather than using startproject and
 then editing the results to include your name, email, and various configuration issues that always get forgotten until
 the worst possible moment, get cookiecutter to do all the work.<br>
 First, get Cookiecutter:
@@ -93,7 +93,7 @@ $ cookiecutter https://github.com/AbolfazlKameli/django-cookiecutter            
 Enter the project and take a look around:
 
 ```shell
-$ cd stack_over_flow_clone
+$ cd stackoverflow_clone
 $ ls
 ```
 
