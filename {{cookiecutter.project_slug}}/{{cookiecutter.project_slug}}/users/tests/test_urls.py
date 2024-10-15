@@ -2,7 +2,7 @@ from django.urls import reverse, resolve
 from rest_framework.test import APISimpleTestCase
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from apps.users import views
+from {{cookiecutter.project_slug}}.users import views
 
 
 class TestUrls(APISimpleTestCase):

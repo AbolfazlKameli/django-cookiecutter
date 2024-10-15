@@ -1,7 +1,7 @@
 from rest_framework.test import APITestCase
 from model_bakery import baker
 
-from apps.users.models import User, UserProfile
+from {{cookiecutter.project_slug}}.users.models import User, UserProfile
 
 
 class TestUser(APITestCase):

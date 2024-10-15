@@ -8,7 +8,7 @@ from pytz import timezone
 from rest_framework import status
 from rest_framework.response import Response
 
-from apps.users.models import User
+from {{cookiecutter.project_slug}}.users.models import User
 
 
 def generate_activation_token(user, lifetime: timedelta = None):
