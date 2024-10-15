@@ -88,7 +88,7 @@ $ cookiecutter https://github.com/AbolfazlKameli/django-cookiecutter            
     [17/17] debug (y): y
 Initialized empty Git repository in /home/abolfazl/projects/stackoverflow_clone/.git/
 ```
-here is the example project I created: [StackOverFlow clone](https://github.com/AbolfazlKameli/created-by-django-cookiecutter)
+here is the example project I created: [StackOverFlow clone](https://github.com/AbolfazlKameli/StackOverFlow-Clone.git)
 
 Enter the project and take a look around:
 
