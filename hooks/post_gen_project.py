@@ -9,11 +9,5 @@ def run_git_init():
     subprocess.run(['git', 'init'], check=True)
 
 
-def run_make_migrations():
-    os.chdir(project_dir)
-    subprocess.run(['python', 'manage.py', 'makemigrations'], check=True)
-
-
 if __name__ == "__main__":
     run_git_init()
-    run_make_migrations()
