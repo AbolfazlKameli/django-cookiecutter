@@ -16,3 +16,4 @@ def run_make_migrations():
 
 if __name__ == "__main__":
     run_git_init()
+    run_make_migrations()
