@@ -12,7 +12,7 @@ click-repl==0.3.0
 cron-descriptor==1.4.5
 Django==5.1
 django-cors-headers==4.4.0
-{% - if cookiecutter.debug == 'y' %}
+{%- if cookiecutter.debug == 'y' %}
 django-debug-toolbar==4.4.6
 {%- endif %}
 django-filter==24.3
