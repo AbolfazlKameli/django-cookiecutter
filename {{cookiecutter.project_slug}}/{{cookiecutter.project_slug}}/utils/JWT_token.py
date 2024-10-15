@@ -1,17 +1,24 @@
+from datetime import datetime, timedelta
+
 import jwt
 from django.conf import settings
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from pytz import timezone
 from rest_framework import status
 from rest_framework.response import Response
 
 from {{cookiecutter.project_slug}}.users.models import User
-from {{cookiecutter.project_slug}}.users.serializers import MyTokenObtainPairSerializer
 
 
-def generate_token(user, lifetime=None):
-    token = MyTokenObtainPairSerializer.get_token(user, lifetime)
-    return {"refresh": str(token), "token": str(token.access_token)}
+def generate_activation_token(user, lifetime: timedelta = None):
+    payload = {
+        'user_id': user.id,
+        'email': user.email,
+        'exp': datetime.now(tz=timezone('Asia/Tehran')) + lifetime if lifetime is not None else timedelta(minutes=5)
+    }
+    token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+    return token
 
 
 def get_user(token):

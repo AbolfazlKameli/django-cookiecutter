@@ -36,7 +36,6 @@ class UserProfile(models.Model):
         validators=[FileExtensionValidator(['png', 'jpg', 'jpeg'])]
     )
     bio = models.TextField(max_length=500, blank=True, null=True)
-    score = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.owner}'
