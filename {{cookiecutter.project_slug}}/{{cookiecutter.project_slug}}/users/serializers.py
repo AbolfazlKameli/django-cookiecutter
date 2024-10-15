@@ -9,25 +9,35 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user, lifetime=None):
         token = super().get_token(user)
-        token['email'] = user.email
-        token['username'] = user.username
         if lifetime:
             token.set_exp(claim='exp', lifetime=lifetime)
         return token
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        refresh = self.get_token(self.user)
+        data.update({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': {
+                'id': self.user.id,
+                'username': self.user.username,
+                'email': self.user.email
+            }
+        })
+        return data
 
 
 class UserSerializer(serializers.ModelSerializer):
     bio = serializers.CharField(source='profile.bio', required=False)
     avatar = serializers.ImageField(source='profile.avatar', required=False)
-    score = serializers.IntegerField(source='profile.score', read_only=True)
 
     class Meta:
         model = User
-        exclude = ('password',)
+        exclude = ('password', 'is_superuser')
         read_only_fields = (
             'id',
             'last_login',
-            'is_superuser',
             'is_admin',
             'groups',
             'user_permissions',
@@ -43,7 +53,6 @@ class UserSerializer(serializers.ModelSerializer):
         profile = instance.profile
         profile.bio = profile_data.get('bio', profile.bio)
         profile.avatar = profile_data.get('avatar', profile.avatar)
-        profile.score = profile_data.get('score', profile.score)
         profile.save()
 
         # saving user info
@@ -113,15 +122,21 @@ class ChangePasswordSerializer(serializers.Serializer):
     new_password = serializers.CharField(required=True, write_only=True)
     confirm_new_password = serializers.CharField(required=True, write_only=True)
 
+    def validate_old_password(self, old_password):
+        user: User = self.context['user']
+        if not user.check_password(old_password):
+            raise serializers.ValidationError('Your old password is not correct.')
+        return old_password
+
     def validate(self, attrs):
         new_password = attrs.get('new_password')
         confirm_password = attrs.get('confirm_new_password')
         if new_password and confirm_password and new_password != confirm_password:
-            raise serializers.ValidationError('Passwords must match')
+            raise serializers.ValidationError('Passwords must match.')
         try:
             validate_password(new_password)
-        except serializers.ValidationError:
-            raise serializers.ValidationError()
+        except serializers.ValidationError as e:
+            raise serializers.ValidationError({'new_password': e.messages})
         return attrs
 
 
@@ -133,11 +148,11 @@ class SetPasswordSerializer(serializers.Serializer):
         new_password = attrs.get('new_password')
         confirm_new_password = attrs.get('confirm_new_password')
         if new_password and confirm_new_password and new_password != confirm_new_password:
-            raise serializers.ValidationError('Passwords must match')
+            raise serializers.ValidationError({'new_password': 'Passwords must match.'})
         try:
             validate_password(new_password)
-        except serializers.ValidationError:
-            raise serializers.ValidationError()
+        except serializers.ValidationError as e:
+            raise serializers.ValidationError({'new_password': e.messages})
         return attrs
 
 

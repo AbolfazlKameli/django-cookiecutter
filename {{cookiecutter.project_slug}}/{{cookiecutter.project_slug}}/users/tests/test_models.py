@@ -1,7 +1,7 @@
 from rest_framework.test import APITestCase
 from model_bakery import baker
 
-from {{cookiecutter.project_slug}}.users.models import User, UserProfile
+from apps.users.models import User, UserProfile
 
 
 class TestUser(APITestCase):
@@ -35,8 +35,8 @@ class TestUser(APITestCase):
 
 class TestUserProfile(APITestCase):
     def setUp(self):
-        baker.make(User, is_active=True, username='test', email='username@email.com')
-        self.profile = UserProfile.objects.last()
+        user = baker.make(User, is_active=True, username='test', email='username@email.com')
+        self.profile = UserProfile.objects.create(owner=user)
 
     def test_str(self):
         self.assertEqual(str(self.profile), 'test - username@email.com')

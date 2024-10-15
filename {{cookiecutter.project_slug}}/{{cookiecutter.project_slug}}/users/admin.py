@@ -7,7 +7,6 @@ from .models import User, UserProfile
 
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
-    readonly_fields = ('score',)
 
 
 class UserAdmin(BaseUserAdmin):
