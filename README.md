@@ -56,37 +56,40 @@ You'll be prompted for some values. Provide them, then a Django project will be 
 Answer the prompts with your own desired options. For example:
 
 ```shell
-$ cookiecutter https://github.com/AbolfazlKameli/django-cookiecutter                                                                  08:51:34 PM
-    [1/17] project_name (My API): StackOverFlow clone
-    [2/17] project_slug (stackoverflow_clone): 
-    [3/17] description (Behold My Awesome Project!): this is a clone of StackOverFlow
-    [4/17] author_name (Abolfazl Kameli): Abolfazl Kameli
-    [5/17] email_domain_name (gmail.com): 
-    [6/17] email_address (abolfazl-kameli@gmail.com): abolfazlkameli0@gmail.com
-    [7/17] github_username (AbolfazlKameli): 
-    [8/17] github_profile_address (https://github.com/AbolfazlKameli): 
-    [9/17] year (2024): 
-    [10/17] domain_name (127.0.0.1): 
-    [11/17] Select open_source_license
-      1 - MIT
-      2 - Beer
-      Choose from [1/2] (1): 2
-    [12/17] timezone (UTC): Asia/Tehran
-    [13/17] use_timezone_in_celery (y): y
-    [14/17] Select database
-      1 - default
-      2 - postgresql
-      Choose from [1/2] (1): 2
-    [15/17] Select caches
-      1 - redis
-      2 - none
-      Choose from [1/2] (1): 1
-    [16/17] Select celery_message_broker
-      1 - redis
-      2 - rabbitmq-server
-      Choose from [1/2] (1): 1
-    [17/17] debug (y): y
-Initialized empty Git repository in /home/abolfazl/projects/stackoverflow_clone/.git/
+ 
+$ cookiecutter https://github.com/AbolfazlKameli/django-cookiecutter
+  [1/18] project_name (My API): StackOverFlow clone
+  [2/18] project_slug (stackoverflow_clone):
+  [3/18] description (Behold My Awesome Project!): this is a clone of StackOverFlow
+  [4/18] author_name (Abolfazl Kameli): Abolfazl Kameli
+  [5/18] email_domain_name (gmail.com):
+  [6/18] email_address (abolfazl-kameli@gmail.com): abolfazlkameli0@gmail.com
+  [7/18] github_username (AbolfazlKameli):
+  [8/18] github_profile_address (https://github.com/AbolfazlKameli):
+  [9/18] your_role (Back-end developer): Back-end Developer
+  [10/18] year (2024):
+  [11/18] domain_name (127.0.0.1):
+  [12/18] Select open_source_license
+    1 - MIT
+    2 - Beer
+    Choose from [1/2] (1): 2
+  [13/18] timezone (UTC): Asia/Tehran
+  [14/18] use_timezone_in_celery (y): y
+  [15/18] Select database
+    1 - default
+    2 - postgresql
+    Choose from [1/2] (1): 2
+  [16/18] Select caches
+    1 - redis
+    2 - none
+    Choose from [1/2] (1): 1
+  [17/18] Select celery_message_broker
+    1 - redis
+    2 - rabbitmq-server
+    Choose from [1/2] (1): 1
+  [18/18] debug (y): y
+Initialized empty Git repository in /home/abolfazl/stackoverflow_clone/.git/
+
 ```
 here is the example project I created: [StackOverFlow clone](https://github.com/AbolfazlKameli/StackOverFlow-Clone.git)
 
