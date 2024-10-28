@@ -28,16 +28,18 @@
 
 ## Authors
 
-- [{{cookiecutter.author_name}}]({{cookiecutter.github_profile_address}}) (What you did in this project)
+- [{{cookiecutter.author_name}}]({{cookiecutter.github_profile_address}}) ({{cookiecutter.your_role}})
 
 ## Run Locally
 
 - Install required packages
 
+
+
 {%- if cookiecutter.celery_message_broker == 'redis' or cookiecutter.caches == 'redis'%}
 visit Redis [installation guide](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/).
 {%- elif cookiecutter.celery_message_broker == 'rabbitmq-server'%}
-visit RabbitMQ [installation guide](https://www.rabbitmq.com/docs/download)
+visit RabbitMQ [installation guide](https://www.rabbitmq.com/docs/download).
 {%- endif %}
 
 - Clone the project
@@ -75,10 +77,13 @@ $ pip install -r requirements.txt
 ```shell
 $ cp .env.example .env
 ```
+
 - Create your own migration files
+
 ```shell
 $ python manage.py makemigrations users
 ```
+
 - Apply Migrations to the Database
 
 ```shell
@@ -96,6 +101,7 @@ $ python manage.py runserver
 ### Setting Up Your Users
 
 To create a **superuser account**, use this command:
+
 ```shell
 $ python manage.py createsuperuser
 ```

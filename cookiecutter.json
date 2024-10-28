@@ -7,6 +7,7 @@
   "email_address": "{{ cookiecutter.author_name.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.email_domain_name.lower() | trim() }}",
   "github_username": "AbolfazlKameli",
   "github_profile_address": "https://github.com/{{cookiecutter.github_username}}",
+  "your_role": "Back-end developer",
   "year": "2024",
 
   "domain_name": "127.0.0.1",
