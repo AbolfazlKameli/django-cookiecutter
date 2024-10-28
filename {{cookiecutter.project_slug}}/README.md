@@ -35,10 +35,11 @@
 - Install required packages
 
 
+
 {%- if cookiecutter.celery_message_broker == 'redis' or cookiecutter.caches == 'redis'%}
 visit Redis [installation guide](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/).
 {%- elif cookiecutter.celery_message_broker == 'rabbitmq-server'%}
-visit RabbitMQ [installation guide](https://www.rabbitmq.com/docs/download)
+visit RabbitMQ [installation guide](https://www.rabbitmq.com/docs/download).
 {%- endif %}
 
 - Clone the project
