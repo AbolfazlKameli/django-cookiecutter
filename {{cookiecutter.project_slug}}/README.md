@@ -28,7 +28,7 @@
 
 ## Authors
 
-- [{{cookiecutter.author_name}}]({{cookiecutter.github_profile_address}}) (What you did in this project)
+- [{{cookiecutter.author_name}}]({{cookiecutter.github_profile_address}}) ({{cookiecutter.your_role}})
 
 ## Run Locally
 
